@@ -1,0 +1,22 @@
+<header id="header">
+    <h1><a href="/">Panorama-DV</a></h1>
+    <nav id="nav">
+        <ul>
+            <li class="special">
+                <a href="#menu" class="menuToggle"><span>Меню</span></a>
+                <div id="menu">
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        {% if services %}
+                        <li><a href="#service" class="scrolly">Наши услуги</a></li>
+                        {% endif %}
+                        {% if portfolio %}
+                        <li><a href="#portfolio" class="scrolly">Портфолио</a></li>
+                        {% endif %}
+                        <li><a href="#contact_us" class="scrolly">Обратная связь</a></li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </nav>
+</header>
