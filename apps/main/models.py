@@ -43,4 +43,3 @@ class Feedback(models.Model):
             # TODO: Возможно, стоит вынести подобную функцию в иное место,
             # типа api
             return reverse('admin:main_feedback_change', args=(self.pk, ))
-
