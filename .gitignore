@@ -3,6 +3,7 @@
 .idea/
 *.swp
 *.bak
+*.vimsession
 settings_local.py
 /static
 /media
