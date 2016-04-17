@@ -1,0 +1,10 @@
+*.pyc
+*.pyo
+.idea/
+*.swp
+*.bak
+settings_local.py
+/static
+/media
+*__pycache__/
+*.sqlite3
