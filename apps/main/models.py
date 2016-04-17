@@ -1,7 +1,16 @@
 from django.core.urlresolvers import reverse
 from django.db import models
 
-from core.models import BaseContentModel
+
+class BaseContentModel(models.Model):
+    title = models.CharField('Заголовок', max_length=100)
+    description = models.TextField('Описание')
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        abstract = True
 
 
 class Features(BaseContentModel):
