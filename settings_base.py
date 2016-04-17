@@ -1,7 +1,7 @@
 # coding=utf-8
 
 """
-Django settings for new_panprama_dv project.
+Django settings for new_panorama_dv project.
 
 For more information on this file, see
 https://docs.djangoproject.com/en/1.9/topics/settings/
