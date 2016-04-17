@@ -9,3 +9,4 @@ settings_local.py
 /media
 *__pycache__/
 *.sqlite3
+*.sass-cache
