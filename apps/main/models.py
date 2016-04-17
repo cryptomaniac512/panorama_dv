@@ -4,7 +4,7 @@ from django.db import models
 from core.models import BaseContentModel
 
 
-class Feature(BaseContentModel):
+class Features(BaseContentModel):
 
     class Meta:
         verbose_name = 'особенность'
