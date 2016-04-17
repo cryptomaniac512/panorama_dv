@@ -1,7 +1,7 @@
 from django.core.urlresolvers import reverse
 from django.db import models
 
-from apps.core.models import BaseContentModel
+from core.models import BaseContentModel
 
 
 class Feature(BaseContentModel):
