@@ -37,9 +37,9 @@ class Feedback(models.Model):
         verbose_name = 'обратная связь'
         verbose_name_plural = verbose_name
 
-        def get_edit_link(self):
-            # TODO: Возможно, стоит это исправить на динамическое получение
-            # имени приложения и модуля
-            # TODO: Возможно, стоит вынести подобную функцию в иное место,
-            # типа api
-            return reverse('admin:main_feedback_change', args=(self.pk, ))
+    def get_edit_link(self):
+        # TODO: Возможно, стоит это исправить на динамическое получение
+        # имени приложения и модуля
+        # TODO: Возможно, стоит вынести подобную функцию в иное место,
+        # типа api
+        return reverse('admin:main_feedback_change', args=(self.pk, ))
