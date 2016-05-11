@@ -21,10 +21,10 @@ class Features(BaseContentModel):
 
 
 class Services(BaseContentModel):
+    # TODO: Все SEO-плюшки вынести в миксин
     short_description = models.TextField(
         'Краткое описание',
-        help_text='Для главной страницы и SEO'
-    )
+        help_text='Для главной страницы и SEO')
 
     class Meta:
         verbose_name = 'услуга'
