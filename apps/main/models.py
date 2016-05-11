@@ -1,3 +1,6 @@
+import os
+from uuid import uuid4
+
 from django.core.urlresolvers import reverse
 from django.db import models
 
@@ -21,10 +24,27 @@ class Features(BaseContentModel):
 
 
 class Services(BaseContentModel):
+
+    def _get_path_and_rename_file(self, filename):
+        """
+            Возвращает путь и новое имя файла
+
+            :param filename: текущее имя файла
+            :type filename: str
+            :return: строка относительного пути к файлу
+            :rtype: str
+        """
+        ext = filename.split('.')[-1]
+        filename = '{}.{}'.format(uuid4().hex, ext)
+        return os.path.join('services', filename)
+
     # TODO: Все SEO-плюшки вынести в миксин
     short_description = models.TextField(
         'Краткое описание',
         help_text='Для главной страницы и SEO')
+    image = models.ImageField(
+        'Изображение', null=True,
+        upload_to=_get_path_and_rename_file)
 
     class Meta:
         verbose_name = 'услуга'
