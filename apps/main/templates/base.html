@@ -22,7 +22,7 @@
         {% block stylesheet_extendable %}{% endblock %}
     </head>
 
-    <body class="landing">
+    <body class="{% block body-class %}landing{% endblock %}">
         <div id="page-wrapper">
             {% include 'header.html' %}
 
