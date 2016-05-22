@@ -42,7 +42,14 @@ class PanoramaStore(BaseContentModel):
         """Очищает директорию хранилища панорамы.
 
         """
-        pass
+        if not self.store_full_path:
+            raise FileNotFoundError('Panorama store direcory does not exists!')
+
+        for root, dirs, files in os.walk(self.store_full_path):
+            for f in files:
+                os.remove(os.path.join(root, f))
+            for d in dirs:
+                os.remove(os.path.join(root, d))
 
     def extract_store(self, zipfile):
         """Распаковывает архив в хранилище панорамы.
