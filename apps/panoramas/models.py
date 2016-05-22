@@ -25,6 +25,9 @@ class PanoramaStore(BaseContentModel):
     def store_full_path(self):
         """Возвращает полный путь к хранилищу панорамы, если он существует.
 
+        :return: абсолютный путь к хранилищу
+        :rtype: str
+
         """
         path = self.__store_full_path()
         if os.path.isdir(path):
@@ -55,7 +58,7 @@ class PanoramaStore(BaseContentModel):
         """Распаковывает архив в хранилище панорамы.
 
         :param zipfile: объект zip-архива
-        :type zipfile: zipfile.ZipFile()
+        :type zipfile: zipfile.ZipFile
         :return: результат распаковки
         :rtype: bool
 
