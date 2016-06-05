@@ -2,8 +2,8 @@ from django.core.urlresolvers import reverse
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 
-from .forms import FeedbackForm
-from .models import Features, Services
+from main.forms import FeedbackForm
+from main.models import Features, Services
 
 
 def get_main_page(request):
