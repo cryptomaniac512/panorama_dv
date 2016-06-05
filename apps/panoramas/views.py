@@ -6,11 +6,11 @@ from panoramas.models import PanoramaStore
 
 
 def get_panorama_page(request, slug=None):
-    panoramas = PanoramaStore.objects.filter(slug=slug).values_list(
-        'store_path', flat=True)
+    panoramas = PanoramaStore.objects.filter(slug=slug)
     if not panoramas.exists():
         return HttpResponseRedirect(reverse('main:main'))
     else:
+        panorama = panoramas.last()
         return render(request, 'panoramas/index.html', {
-            'store': panoramas.last(),
+            'store': panorama.store_url,
         })
