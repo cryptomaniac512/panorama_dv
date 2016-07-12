@@ -54,13 +54,14 @@ class Services(BaseContentModel):
 class Portfolio(BaseContentModel):
     short_description = models.TextField(
         'Краткое описание',
-        help_text='Для главной страницы и SEO'
-    )
+        help_text='Для главной страницы и SEO')
     image = models.ImageField('Превью', upload_to='portfolio/%Y/%m/%d')
     slug = models.SlugField('URL', max_length=40, unique=True)
     pub_date = models.DateTimeField('Дата публикации')
     is_published = models.BooleanField('Опубликовать', default=True)
-    on_main = models.BooleanField('На главной', default=False)
+    on_main = models.BooleanField('Показывать на главной', default=False)
+    on_services = models.BooleanField(
+        'Показывать на странице услуг', default=False)
     panorama_url = models.URLField('URL на панораму', blank=True, null=True)
 
     def __str__(self):
