@@ -50,9 +50,7 @@ class Services(BaseContentModel):
 
 
 class Portfolio(BaseContentModel):
-    short_description = models.TextField(
-        'Краткое описание',
-        help_text='Для главной страницы и SEO')
+    short_description = models.TextField('Краткое описание')
     image = models.ImageField('Превью', upload_to='portfolio/%Y/%m/%d')
     slug = models.SlugField('URL', max_length=40, unique=True)
     pub_date = models.DateTimeField('Дата публикации')
