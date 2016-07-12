@@ -8,7 +8,7 @@ from django.conf import settings
 from django.core.mail import send_mail
 from django import forms
 
-from .models import Feedback, Services
+from .models import Feedback, Services, Portfolio
 
 
 class FeedbackForm(forms.ModelForm):
@@ -58,8 +58,24 @@ class FeedbackForm(forms.ModelForm):
 
 class ServicesAdminForm(forms.ModelForm):
     class Meta:
-        model = Services
         fields = '__all__'
+        model = Services
+        widgets = {
+            'description': FroalaEditor(options={
+                'height': 200, 'width': '60%',
+                'placeholderText': 'Подробное описание',
+            }),
+            'short_description': FroalaEditor(options={
+                'height': 200, 'width': '60%',
+                'placeholderText': 'Для главной страницы и SEO',
+            }),
+        }
+
+
+class PortfolioAdminForm(forms.ModelForm):
+    class Meta:
+        fields = '__all__'
+        model = Portfolio
         widgets = {
             'description': FroalaEditor(options={
                 'height': 200, 'width': '60%',
