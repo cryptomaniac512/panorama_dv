@@ -14,10 +14,14 @@ def get_main_page(request):
             form.send_mail(is_saved=True)
             return HttpResponseRedirect(reverse('main:main'))
     else:
+        portfolio = Portfolio.objects.filter(
+            is_published=True, on_main=True
+        ).order_by('-pub_date')[:4]
         features = Features.objects.all()
         services = Services.objects.all()
         form = FeedbackForm()
         return render(request, 'main/main.html', {
+            'portfolio': portfolio,
             'features': features,
             'services': services,
             'form': form,
