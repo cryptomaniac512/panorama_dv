@@ -2,10 +2,13 @@
 
 from __future__ import unicode_literals
 
+from froala_editor.widgets import FroalaEditor
+
 from django.conf import settings
 from django.core.mail import send_mail
 from django import forms
-from .models import Feedback
+
+from .models import Feedback, Services
 
 
 class FeedbackForm(forms.ModelForm):
@@ -49,5 +52,19 @@ class FeedbackForm(forms.ModelForm):
             }),
             'message': forms.Textarea(attrs={
                 'required': True, 'rows': 6, 'placeholder': 'Сообщение'
+            }),
+        }
+
+
+class ServicesAdminForm(forms.ModelForm):
+    class Meta:
+        model = Services
+        fields = '__all__'
+        widgets = {
+            'description': FroalaEditor(options={
+                'height': 200, 'placeholderText': 'Подробное описание',
+            }),
+            'short_description': FroalaEditor(options={
+                'height': 200, 'placeholderText': 'Для главной страницы и SEO',
             }),
         }
