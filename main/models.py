@@ -58,7 +58,9 @@ class Portfolio(BaseContentModel):
     on_main = models.BooleanField('Показывать на главной', default=False)
     on_services = models.BooleanField(
         'Показывать на странице услуг', default=False)
-    panorama_url = models.URLField('URL на панораму', blank=True, null=True)
+    panorama = models.ForeignKey(
+        'panoramas.PanoramaStore', blank=True, null=True,
+        verbose_name='Панорама')
 
     def __str__(self):
         return self.title
