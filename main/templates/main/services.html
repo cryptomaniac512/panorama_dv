@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <section id="short" class="wrapper special">
+        <div class="inner">
+            <header class="major">
+                <h2>Услуги и цены</h2>
+                <ul class="actions">
+                    <li><a href="#contact_us" class="button special scrolly">Заказать</a></li>
+                </ul>
+            </header>
+        </div>
+    </section>
+
+    {% if services %}
+        <section id="service" class="wrapper alt style2">
+            {% for service in services %}
+                {% if service.description %}
+                    <section class="spotlight">
+                        <div class="image">
+                            <img src="{{ service.image.url }}" alt="">
+                        </div>
+                        <div class="content">
+                            <h2>{{ service.title }}</h2>
+                            <p>{{ service.description|safe }}</p>
+                        </div>
+                    </section>
+                {% endif %}
+            {% endfor %}
+        </section>
+    {% endif %}
+
+    {% if portfolio %}
+        <section id="portfolio" class="wrapper style2 special">
+            <header class="major">
+                <h2>Портфолио</h2>
+                <p>Это - малая часть наших работ.<br/>Больше - в нашем портфолио.</p>
+            </header>
+            <div class="row uniform">
+                {% for element in portfolio %}
+                    <div class="10u(small) -1u(small) 6u(large) 3u">
+                <a href="{{ element.panorama_url.url }}">
+                        <span class="image fit img-responsive">
+                            <img src="{{ element.image.url }}" alt="">
+                        </span>
+                </a>
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
+    {% endif %}
+
+    <section id="contact_us" class="wrapper style5 special">
+        <div class="inner">
+            <header class="major">
+                <h4>Связаться с нами</h4>
+                <p>Оставьте свои контактные данные и мы обязательно свяжемся с Вами в ближайшее время!</p>
+            </header>
+            <form action="{% url 'main:main' %}" method="post">
+                <div class="row uniform">
+                    {% csrf_token %}
+                    <div class="6u 12u$(xsmall)">{{ form.name }}</div>
+                    <div class="6u 12u$(xsmall)">{{ form.email }}</div>
+                    <div class="6u 12u$(xsmall)">{{ form.phone }}</div>
+                    <div class="6u 12u$(xsmall)">{{ form.service }}</div>
+                    <div class="12u">{{ form.message }}</div>
+                    <ul class="actions">
+                        <li><input type="submit" name="submit" value="Отправить" class="special"></li>
+                        <li><input type="reset" value="Сбросить"></li>
+                    </ul>
+                </div>
+            </form>
+        </div>
+    </section>
+
+{% endblock %}
+
