@@ -30,6 +30,8 @@ INSTALLED_APPS = [
 
     'django_extensions',
 
+    'froala_editor',
+
     'main',
     'panoramas',
 ]

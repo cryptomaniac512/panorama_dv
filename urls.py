@@ -24,6 +24,7 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 
 urlpatterns = [
+    url(r'^froala_editor/', include('froala_editor.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^', include('main.urls')),
     url(r'^panoramas/', include('panoramas.urls')),
