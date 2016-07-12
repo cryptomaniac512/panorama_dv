@@ -1,10 +1,10 @@
 from django.conf import settings
 from django.core.mail import send_mail
-from django.forms import ModelForm, TextInput, EmailInput, Select, Textarea
+from django import forms
 from .models import Feedback
 
 
-class FeedbackForm(ModelForm):
+class FeedbackForm(forms.ModelForm):
 
     def send_mail(self, is_saved=False):
         if self.is_valid():
@@ -31,19 +31,19 @@ class FeedbackForm(ModelForm):
         model = Feedback
         fields = ['name', 'email', 'phone', 'service', 'message']
         widgets = {
-            'name': TextInput(attrs={
+            'name': forms.TextInput(attrs={
                 'required': True, 'placeholder': 'Имя:'
             }),
-            'email': EmailInput(attrs={
+            'email': forms.EmailInput(attrs={
                 'required': False, 'placeholder': 'Email:'
             }),
-            'phone': TextInput(attrs={
+            'phone': forms.TextInput(attrs={
                 'required': True, 'placeholder': 'Контактный номер:'
             }),
-            'service': Select(attrs={
+            'service': forms.Select(attrs={
                 'required': False,
             }),
-            'message': Textarea(attrs={
+            'message': forms.Textarea(attrs={
                 'required': True, 'rows': 6, 'placeholder': 'Сообщение'
             }),
         }
