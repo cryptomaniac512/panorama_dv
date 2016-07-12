@@ -41,7 +41,7 @@ def get_services_page(request):
         ).order_by('-pub_date')[:4]
         services = Services.objects.all()
         form = FeedbackForm()
-        return render(request, 'website/content_pages/services.html', {
+        return render(request, 'main/services.html', {
             'portfolio': portfolio,
             'services': services,
             'form': form,
