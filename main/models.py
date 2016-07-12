@@ -51,6 +51,26 @@ class Services(BaseContentModel):
         verbose_name_plural = 'услуги'
 
 
+class Portfolio(BaseContentModel):
+    short_description = models.TextField(
+        'Краткое описание',
+        help_text='Для главной страницы и SEO'
+    )
+    image = models.ImageField('Превью', upload_to='portfolio/%Y/%m/%d')
+    slug = models.SlugField('URL', max_length=40, unique=True)
+    pub_date = models.DateTimeField('Дата публикации')
+    is_published = models.BooleanField('Опубликовать', default=True)
+    on_main = models.BooleanField('На главной', default=False)
+    panorama_url = models.URLField('URL на панораму', blank=True, null=True)
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = 'портфолио'
+        verbose_name_plural = 'портфолио'
+
+
 class Feedback(models.Model):
     name = models.CharField('Имя', max_length=100)
     email = models.EmailField('Email', blank=True, null=True)
