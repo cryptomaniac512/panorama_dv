@@ -39,9 +39,7 @@ class Services(BaseContentModel):
         return os.path.join('services', filename)
 
     # TODO: Все SEO-плюшки вынести в миксин
-    short_description = models.TextField(
-        'Краткое описание',
-        help_text='Для главной страницы и SEO')
+    short_description = models.TextField('Краткое описание')
     image = models.ImageField(
         'Изображение', null=True,
         upload_to=_get_path_and_rename_file)
