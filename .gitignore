@@ -17,6 +17,6 @@ settings_local.py
 
 # Это так себе решение, но обмазываться папками статики тоже не хочется,
 # поэтому перечисляю скомпилированные стили
-apps/main/static/css/ie8.css
-apps/main/static/css/ie9.css
-apps/main/static/css/main.css
+main/static/css/ie8.css
+main/static/css/ie9.css
+main/static/css/main.css
