@@ -62,9 +62,11 @@ class ServicesAdminForm(forms.ModelForm):
         fields = '__all__'
         widgets = {
             'description': FroalaEditor(options={
-                'height': 200, 'placeholderText': 'Подробное описание',
+                'height': 200, 'width': '60%',
+                'placeholderText': 'Подробное описание',
             }),
             'short_description': FroalaEditor(options={
-                'height': 200, 'placeholderText': 'Для главной страницы и SEO',
+                'height': 200, 'width': '60%',
+                'placeholderText': 'Для главной страницы и SEO',
             }),
         }
