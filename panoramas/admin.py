@@ -1,5 +1,5 @@
 from django.contrib import admin
-from panoramas.models import PanoramaStore
+from .models import PanoramaStore
 
 
 @admin.register(PanoramaStore)
