@@ -4,7 +4,8 @@ from __future__ import unicode_literals
 
 from django.contrib import admin
 
-from main.models import Features, Feedback, Services, Portfolio
+from .forms import ServicesAdminForm
+from .models import Features, Feedback, Services, Portfolio
 
 
 @admin.register(Portfolio)
@@ -12,6 +13,10 @@ class PortfoliAdmin(admin.ModelAdmin):
 
     prepopulated_fields = {'slug': ('title', )}
 
-admin.site.register(Services)
+
+@admin.register(Services)
+class ServicesAdmin(admin.ModelAdmin):
+    form = ServicesAdminForm
+
 admin.site.register(Features)
 admin.site.register(Feedback)
