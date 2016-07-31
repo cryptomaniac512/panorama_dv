@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.core.urlresolvers import reverse
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
@@ -57,5 +58,8 @@ def feedback_submit(request):
         if form.is_valid():
             form.save()
             form.send_mail(is_saved=True)
+            result_text = ('Ваше сообщение принято! '
+                           'Мы ознакомимся с ним в ближайшее время')
+            messages.add_message(request, messages.SUCCESS, result_text)
 
     return HttpResponseRedirect(referer)
