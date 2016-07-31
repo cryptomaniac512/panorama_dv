@@ -4,7 +4,7 @@
     cursor: default;
 }
 
-.hovereffect .overlay li:first-child {
+.hovereffect .overlay ul.actions.vertical li:first-child {
     margin-top: 0.6em;
 }
 
