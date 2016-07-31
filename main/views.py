@@ -1,10 +1,10 @@
 from django.contrib import messages
 from django.core.urlresolvers import reverse
 from django.shortcuts import render
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponseNotFound
 
 from .forms import FeedbackForm
-from .models import Features, Services
+from .models import Features, Portfolio, Services
 
 
 def get_main_page(request):
@@ -20,6 +20,44 @@ def get_services_page(request):
     services = Services.objects.all()
     return render(request, 'main/services.html', {
         'services': services,
+    })
+
+
+def get_portfolios_page(request):
+    """Список всего портфолио.
+
+    :param request: объект реквеста
+    :type request: django.core.handlers.wsgi.WSGIRequest
+
+    """
+    top_portfolios = Portfolio.objects.filter(
+        is_published=True, on_main=True)
+    portfolios = Portfolio.objects.filter(
+        is_published=True).exclude(pk__in=top_portfolios)
+    return render(request, 'main/portfolios.html', {
+        'top_portfolios': top_portfolios,
+        'portfolios': portfolios,
+    })
+
+
+def get_portfolio_page(request, pk):
+    """Элемент портфолио.
+
+    :param request: объект реквеста
+    :type request: django.core.handlers.wsgi.WSGIRequest
+
+    """
+    portfolio_query = Portfolio.objects.filter(
+        pk=pk, is_published=True
+    )
+
+    # TODO: Это уебанство, нужно возаращать NotFound
+    if not portfolio_query.exists():
+        return HttpResponseRedirect(reverse('main:main'))
+
+    portfolio = portfolio_query.last()
+    return render(request, 'main/portfolio.html', {
+        'portfolio': portfolio,
     })
 
 
