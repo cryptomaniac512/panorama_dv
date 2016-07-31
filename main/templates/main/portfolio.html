@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    {% with portfolio as element %}
+        <section id="short" class="wrapper special">
+            <div class="inner">
+                <header class="major">
+                    <h2>{{ element.title }}</h2>
+                    {% if messages %}
+                        {% include "main/include/messages.html" %}
+                    {% else %}
+                        <ul class="actions">
+                            <li><a href="#contact_us" class="button special scrolly">Связаться с нами</a></li>
+                        </ul>
+                    {% endif %}
+                </header>
+            </div>
+        </section>
+
+        <section id="top_portfolios" class="wrapper style2">
+            <div class="inner">
+                <div class="content">
+                    <span class="image left">
+                        <ul class="actions vertical">
+                            {% if element.panorama %}
+                                <li><a target="_blank" href="{% url 'panoramas:panorama_page' element.panorama.slug %}">
+                                    <img src="{{ element.image.url }}" alt="">
+                                </a></li>
+                            {% else %}
+                                <li><img src="{{ element.image.url }}" alt=""></li>
+                            {% endif %}
+                            {% if element.panorama %}
+                                <li><a target="_blank" href="{% url 'panoramas:panorama_page' element.panorama.slug %}" class="icon button special fit fa-eye">3D-тур</a></li>
+                            {% endif %}
+                        </ul>
+                    </span>
+                    <h2>{{ element.title }}</h2>
+                    <p>{{ element.description|safe }}</p>
+                </div>
+            </div>
+        </section>
+    {% endwith %}
+
+{% endblock %}
