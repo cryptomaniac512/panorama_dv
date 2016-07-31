@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <section id="short" class="wrapper special">
+        <div class="inner">
+            <header class="major">
+                <h2>Портфолио</h2>
+                {% if messages %}
+                    {% include "main/include/messages.html" %}
+                {% else %}
+                    <ul class="actions">
+                        <li><a href="#contact_us" class="button special scrolly">Связаться с нами</a></li>
+                    </ul>
+                {% endif %}
+            </header>
+        </div>
+    </section>
+
+    {% if top_portfolios %}
+        <section id="top_portfolios" class="wrapper alt style2">
+            {% for element in top_portfolios %}
+                {% if element.short_description %}
+                    <section class="spotlight">
+                        <div class="image">
+                            {% if element.panorama %}
+                                <a target="_blank" href="{% url 'panoramas:panorama_page' element.panorama.slug %}">
+                                    <img src="{{ element.image.url }}" alt="">
+                                </a>
+                            {% else %}
+                                <img src="{{ element.image.url }}" alt="">
+                            {% endif %}
+                        </div>
+                        <div class="content">
+                            <a href="{% url 'main:portfolio' element.pk %}">
+                                <h2>{{ element.title }}</h2>
+                            </a>
+                            <p>{{ element.short_description|safe }}</p>
+                            <ul class="actions">
+                                <li><a href="{% url 'main:portfolio' element.pk %}" class="icon button fa-info">подробнее</a></li>
+                                {% if element.panorama %}
+                                    <li><a target="_blank" href="{% url 'panoramas:panorama_page' element.panorama.slug %}" class="icon button fa-eye">3D-тур</a></li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </section>
+                {% endif %}
+            {% endfor %}
+        </section>
+    {% endif %}
+
+    {% if portfolios %}
+        <section id="portfolios" class="wrapper style4 special">
+            <div class="inner">
+                <header class="major">
+                    <h2>Больше работ</h2>
+                </header>
+                <div class="box alt">
+                    <div class="row uniform 50%">
+                        {% for element in portfolios %}
+                        <div class="4u">
+                            <span class="image fit">
+                                <img src="{{ element.image.url }}" alt="{{ element.title }}">
+                            </span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </section>
+    {% endif %}
+
+{% endblock %}
+
