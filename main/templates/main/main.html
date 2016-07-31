@@ -1,4 +1,9 @@
 {% extends "base.html" %}
+{% load staticfiles %}
+
+{% block stylesheet_extendable %}
+            <link rel="stylesheet" href="{% static 'css/hovereffect.css' %}">
+{% endblock stylesheet_extendable %}
 
 {% block content %}
 

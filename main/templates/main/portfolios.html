@@ -63,19 +63,7 @@
                 <div class="box alt">
                     <div class="row uniform 50%">
                         {% for element in portfolios %}
-                        <div class="12u(small) 6u(large) 4u hovereffect">
-                            <span class="image fit">
-                                <img src="{{ element.image.url }}" alt="{{ element.title }}">
-                            </span>
-                            <div class="overlay">
-                                <ul class="actions vertical">
-                                    <li><a href="{% url 'main:portfolio' element.pk %}" class="icon button fit fa-info">подробнее</a></li>
-                                    {% if element.panorama %}
-                                        <li><a target="_blank" href="{% url 'panoramas:panorama_page' element.panorama.slug %}" class="icon button fit fa-eye">3D-тур</a></li>
-                                    {% endif %}
-                                </ul>
-                            </div>
-                        </div>
+                            {% include "main/include/portfolio_element_block.html" %}
                         {% endfor %}
                     </div>
                 </div>
