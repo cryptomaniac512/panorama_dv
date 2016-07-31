@@ -1,0 +1,9 @@
+{% if messages %}
+    <ul class="actions">
+    {% for message in messages %}
+        <li>
+            <blockquote>{{ message }}</blockquote>
+        </li>
+    {% endfor %}
+    </ul>
+{% endif %}
