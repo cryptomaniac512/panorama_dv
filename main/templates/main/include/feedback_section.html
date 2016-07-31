@@ -1,0 +1,24 @@
+{% with g_feedback_form as form %}
+    <section id="contact_us" class="wrapper style5 special">
+        <div class="inner">
+            <header class="major">
+                <h4>Связаться с нами</h4>
+                <p>Оставьте свои контактные данные и мы обязательно свяжемся с Вами в ближайшее время!</p>
+            </header>
+            <form action="{% url 'main:feedback' %}" method="post">
+                <div class="row uniform">
+                    {% csrf_token %}
+                    <div class="6u 12u$(xsmall)">{{ form.name }}</div>
+                    <div class="6u 12u$(xsmall)">{{ form.email }}</div>
+                    <div class="6u 12u$(xsmall)">{{ form.phone }}</div>
+                    <div class="6u 12u$(xsmall)">{{ form.service }}</div>
+                    <div class="12u">{{ form.message }}</div>
+                    <ul class="actions">
+                        <li><input type="submit" name="submit" value="Отправить" class="special"></li>
+                        <li><input type="reset" value="Сбросить"></li>
+                    </ul>
+                </div>
+            </form>
+        </div>
+    </section>
+{% endwith %}
