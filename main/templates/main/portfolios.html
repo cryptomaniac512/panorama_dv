@@ -54,7 +54,7 @@
         </section>
     {% endif %}
 
-    {% if top_portfolios %}
+    {% if portfolios %}
         <section id="portfolios" class="wrapper style4 special">
             <div class="inner">
                 <header class="major">
@@ -62,7 +62,7 @@
                 </header>
                 <div class="box alt">
                     <div class="row uniform 50%">
-                        {% for element in top_portfolios %}
+                        {% for element in portfolios %}
                         <div class="12u(small) 6u(large) 4u hovereffect">
                             <span class="image fit">
                                 <img src="{{ element.image.url }}" alt="{{ element.title }}">
