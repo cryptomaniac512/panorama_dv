@@ -1,20 +1,14 @@
 <section id="portfolio" class="wrapper style4 special">
-    <header class="major">
-        <h2>Портфолио</h2>
-    </header>
-    <div class="row uniform">
-        {% for element in g_portfolio %}
-        <div class="10u(small) -1u(small) 6u(large) 3u">
-            <span class="image fit img-responsive">
-                {% if element.panorama %}
-                <a href="{% url 'panoramas:panorama_page' element.panorama.slug %}" target="_blank">
-                    <img src="{{ element.image.url }}" alt="">
-                </a>
-                {% else %}
-                <img src="{{ element.image.url }}" alt="">
-                {% endif %}
-            </span>
+    <div class="inner">
+        <header class="major">
+            <h2>Портфолио</h2>
+        </header>
+        <div class="box alt">
+            <div class="row uniform 50%">
+                {% for element in g_portfolio %}
+                    {% include "main/include/portfolio_element_block.html" %}
+                {% endfor %}
+            </div>
         </div>
-        {% endfor %}
     </div>
 </section>
