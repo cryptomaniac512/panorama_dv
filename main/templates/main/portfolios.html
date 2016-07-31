@@ -1,4 +1,9 @@
 {% extends "base.html" %}
+{% load staticfiles %}
+
+{% block stylesheet_extendable %}
+            <link rel="stylesheet" href="{% static 'css/hovereffect.css' %}">
+{% endblock stylesheet_extendable %}
 
 {% block content %}
 
@@ -49,7 +54,7 @@
         </section>
     {% endif %}
 
-    {% if portfolios %}
+    {% if top_portfolios %}
         <section id="portfolios" class="wrapper style4 special">
             <div class="inner">
                 <header class="major">
@@ -57,11 +62,19 @@
                 </header>
                 <div class="box alt">
                     <div class="row uniform 50%">
-                        {% for element in portfolios %}
-                        <div class="4u">
+                        {% for element in top_portfolios %}
+                        <div class="12u(small) 6u(large) 4u hovereffect">
                             <span class="image fit">
                                 <img src="{{ element.image.url }}" alt="{{ element.title }}">
                             </span>
+                            <div class="overlay">
+                                <ul class="actions vertical">
+                                    <li><a href="{% url 'main:portfolio' element.pk %}" class="icon button fit fa-info">подробнее</a></li>
+                                    {% if element.panorama %}
+                                        <li><a target="_blank" href="{% url 'panoramas:panorama_page' element.panorama.slug %}" class="icon button fit fa-eye">3D-тур</a></li>
+                                    {% endif %}
+                                </ul>
+                            </div>
                         </div>
                         {% endfor %}
                     </div>
