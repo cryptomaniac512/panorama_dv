@@ -20,7 +20,7 @@
         <div class="inner">
             <header class="major">
                 <h2>Представьте Ваш бизнес по новому</h2>
-                <p>Полный дескрипшн сайта</p>
+                <p>Мы сотрудничаем с городским порталом DVhab.ru и предлагаем разместить ваш 3D тур для аудитории более 30 000 пользователей ежедневно</p>
                 <p>Совместимо с любыми устройствами</p>
                 <ul class="icons major">
                     <li><span class="icon fa-android major style1"></span></li>
@@ -52,7 +52,7 @@
             <div class="inner">
                 <header class="major">
                     <h2>Факты о виртуальных турах</h2>
-                    <p>По данным Национальной ассоциации риэлторов США (НАР ), виртуальные 3D туры на сайте компании резко улучшают её показатели. Убедитесь сами!</p>
+                    <p>По данным Национальной ассоциации риэлторов США (НАР), виртуальные 3D туры на сайте компании резко улучшают её показатели. Убедитесь сами!</p>
                 </header>
                 <ul class="features">
                     {% for feature in features %}
@@ -66,28 +66,8 @@
         </section>
     {% endif %}
 
-    {% if portfolio %}
-        <section id="portfolio" class="wrapper style4 special">
-            <header class="major">
-                <h2>Портфолио</h2>
-                <p>Это - малая часть наших работ.<br/>Больше - в нашем портфолио.</p>
-            </header>
-            <div class="row uniform">
-                {% for element in portfolio %}
-                <div class="10u(small) -1u(small) 6u(large) 3u">
-                    <span class="image fit img-responsive">
-                        {% if element.panorama %}
-                        <a href="{% url 'panoramas:panorama_page' element.panorama.slug %}" target="_blank">
-                            <img src="{{ element.image.url }}" alt="">
-                        </a>
-                        {% else %}
-                        <img src="{{ element.image.url }}" alt="">
-                        {% endif %}
-                    </span>
-                </div>
-                {% endfor %}
-            </div>
-        </section>
+    {% if g_portfolio %}
+        {% include 'main/include/services_section.html' %}
     {% endif %}
 
     <section id="contact_us" class="wrapper style5 special">

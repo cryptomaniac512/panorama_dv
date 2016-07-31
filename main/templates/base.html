@@ -24,12 +24,12 @@
 
     <body class="{% block body-class %}landing{% endblock %}">
         <div id="page-wrapper">
-            {% include 'header.html' %}
+            {% include 'include/header.html' %}
 
             {% block content %}
             {% endblock %}
 
-            {% include 'footer.html' %}
+            {% include 'include/footer.html' %}
         </div>
 
         {# JavaScript blocks here #}
