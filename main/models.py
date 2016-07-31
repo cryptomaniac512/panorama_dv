@@ -68,6 +68,8 @@ class Portfolio(BaseContentModel):
     class Meta:
         verbose_name = 'портфолио'
         verbose_name_plural = 'портфолио'
+        get_latest_by = 'pub_date'
+        ordering = ['-pub_date']
 
 
 class Feedback(models.Model):
