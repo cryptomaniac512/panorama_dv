@@ -38,3 +38,24 @@ def get_services_page(request):
             'services': services,
             'form': form,
         })
+
+
+def feedback_submit(request):
+    """View обработки формы обратной связи.
+
+    :param request: объект реквеста
+    :type request: django.core.handlers.wsgi.WSGIRequest
+
+    """
+    if 'HTTP_REFERER' in request.META:
+        referer = request.META['HTTP_REFERER']
+    else:
+        referer = reverse('main:main')
+
+    if request.method == 'POST':
+        form = FeedbackForm(request.POST)
+        if form.is_valid():
+            form.save()
+            form.send_mail(is_saved=True)
+
+    return HttpResponseRedirect(referer)
