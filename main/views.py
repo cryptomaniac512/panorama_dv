@@ -30,12 +30,12 @@ def get_portfolios_page(request):
     :type request: django.core.handlers.wsgi.WSGIRequest
 
     """
-    top_portfolios = Portfolio.objects.filter(
-        is_published=True, on_main=True)
+    latest_portfolios = Portfolio.objects.filter(
+        is_published=True)[:3]
     portfolios = Portfolio.objects.filter(
-        is_published=True).exclude(pk__in=top_portfolios)
+        is_published=True).exclude(pk__in=latest_portfolios)
     return render(request, 'main/portfolios.html', {
-        'top_portfolios': top_portfolios,
+        'top_portfolios': latest_portfolios,
         'portfolios': portfolios,
     })
 
