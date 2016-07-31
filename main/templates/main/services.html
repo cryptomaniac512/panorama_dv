@@ -31,23 +31,8 @@
         </section>
     {% endif %}
 
-    {% if portfolio %}
-        <section id="portfolio" class="wrapper style2 special">
-            <header class="major">
-                <h2>Портфолио</h2>
-            </header>
-            <div class="row uniform">
-                {% for element in portfolio %}
-                    <div class="10u(small) -1u(small) 6u(large) 3u">
-                <a href="{{ element.panorama_url.url }}">
-                        <span class="image fit img-responsive">
-                            <img src="{{ element.image.url }}" alt="">
-                        </span>
-                </a>
-                    </div>
-                {% endfor %}
-            </div>
-        </section>
+    {% if g_portfolio %}
+        {% include 'main/include/services_section.html' %}
     {% endif %}
 
     <section id="contact_us" class="wrapper style5 special">
