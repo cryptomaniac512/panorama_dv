@@ -47,4 +47,4 @@ EMAIL_HOST_USER = '{{ item.mail.user }}'
 
 DEFAULT_FROM_EMAIL = '{{ item.mail.default_from }}'
 
-EMAIL_TO = [EMAIL_FROM]
+EMAIL_TO = [DEFAULT_FROM_EMAIL]
