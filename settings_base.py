@@ -53,7 +53,6 @@ TEMPLATES = [
         'DIRS': [
             os.path.join(BASE_DIR, 'templates')
         ],
-        'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -63,6 +62,11 @@ TEMPLATES = [
                 'main.context_processors.get_portfolio',
                 'main.context_processors.get_feedback_form',
             ],
+            'loaders': (
+                'django.template.loaders.filesystem.Loader',
+                'django.template.loaders.app_directories.Loader',
+                'panoramas.template_loaders.Loader',
+            )
         },
     },
 ]

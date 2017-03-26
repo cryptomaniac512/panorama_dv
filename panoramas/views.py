@@ -2,7 +2,6 @@ from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 
-from .api import get_store_url
 from .models import PanoramaStore
 
 
@@ -12,8 +11,4 @@ def get_panorama_page(request, slug=None):
         return HttpResponseRedirect(reverse('main:main'))
     else:
         panorama = panoramas.last()
-        panorama_store_url = get_store_url(
-            panorama.store_dir_name, panorama.slug)
-        return render(request, 'panoramas/index.html', {
-            'store': panorama_store_url,
-        })
+        return render(request, panorama)
