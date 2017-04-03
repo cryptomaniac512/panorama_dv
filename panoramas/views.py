@@ -1,19 +1,28 @@
+import os
+
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
+from django.views.static import serve
 
-from .api import get_store_url
 from .models import PanoramaStore
 
 
 def get_panorama_page(request, slug=None):
-    panoramas = PanoramaStore.objects.filter(slug=slug)
-    if not panoramas.exists():
+    try:
+        panorama = PanoramaStore.objects.get(slug=slug)
+    except PanoramaStore.DoesNotExist:
         return HttpResponseRedirect(reverse('main:main'))
-    else:
-        panorama = panoramas.last()
-        panorama_store_url = get_store_url(
-            panorama.store_dir_name, panorama.slug)
-        return render(request, 'panoramas/index.html', {
-            'store': panorama_store_url,
-        })
+
+    return render(request, panorama)
+
+
+def get_panorama_static(request, slug, static):
+    try:
+        panorama = PanoramaStore.objects.get(slug=slug)
+    except PanoramaStore.DoesNotExist:
+        return HttpResponseRedirect(reverse('main:main'))
+
+    filepath = os.path.join(panorama.absolute_path, static)
+    return serve(request, os.path.basename(filepath),
+                 os.path.dirname(filepath))
