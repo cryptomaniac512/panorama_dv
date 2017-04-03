@@ -75,6 +75,9 @@ class PanoramaStore(models.Model):
         super(PanoramaStore, self).delete(*args, **kwargs)
         shutil.rmtree(absolute_path)
 
+    def __str__(self):
+        return self.title
+
     class Meta:
         verbose_name = 'панорама'
         verbose_name_plural = 'панорамы'
