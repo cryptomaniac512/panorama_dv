@@ -20,5 +20,6 @@ class ServicesAdmin(admin.ModelAdmin):
 
     form = ServicesAdminForm
 
+
 admin.site.register(Features)
 admin.site.register(Feedback)

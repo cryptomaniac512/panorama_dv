@@ -20,3 +20,4 @@ settings_local.py
 main/static/css/ie8.css
 main/static/css/ie9.css
 main/static/css/main.css
+*.~
