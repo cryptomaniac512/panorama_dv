@@ -101,12 +101,12 @@ STATIC_URL = '/static/'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' if DEBUG \
     else 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = env('EMAIL_HOST', cast=str)
-EMAIL_PORT = env('EMAIL_PORT', cast=int)
+EMAIL_HOST = env('EMAIL_HOST', cast=str, default=None)
+EMAIL_PORT = env('EMAIL_PORT', cast=int, default=None)
 EMAIL_USE_TLS = True
-EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD', cast=str)
-EMAIL_HOST_USER = env('EMAIL_HOST_USER', cast=str)
-EMAIL_FROM = env('EMAIL_FROM', cast=str)
+EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD', cast=str, default=None)
+EMAIL_HOST_USER = env('EMAIL_HOST_USER', cast=str, default=None)
+EMAIL_FROM = env('EMAIL_FROM', cast=str, default=None)
 EMAIL_TO = [EMAIL_FROM]
 
 
