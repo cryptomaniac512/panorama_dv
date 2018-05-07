@@ -1,0 +1,124 @@
+/*
+	Spectral by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+*/
+/* Spotlight */
+/* line 14, ../../scss/ie9.scss */
+.spotlight {
+  display: block;
+}
+/* line 17, ../../scss/ie9.scss */
+.spotlight .image {
+  display: inline-block;
+  vertical-align: top;
+}
+/* line 22, ../../scss/ie9.scss */
+.spotlight .content {
+  padding: 4em 4em 2em 4em ;
+  display: inline-block;
+}
+/* line 27, ../../scss/ie9.scss */
+.spotlight:after {
+  clear: both;
+  content: '';
+  display: block;
+}
+
+/* Features */
+/* line 36, ../../scss/ie9.scss */
+.features {
+  display: block;
+}
+/* line 39, ../../scss/ie9.scss */
+.features li {
+  float: left;
+}
+/* line 43, ../../scss/ie9.scss */
+.features:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+/* Banner + Wrapper (style4) */
+/* line 52, ../../scss/ie9.scss */
+#banner,
+.wrapper.style4 {
+  background-image: url("../images/banner.png");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+/* line 60, ../../scss/ie9.scss */
+#banner:before,
+.wrapper.style4:before {
+  background: #000000;
+  content: '';
+  height: 100%;
+  left: 0;
+  opacity: 0.5;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+/* line 71, ../../scss/ie9.scss */
+#banner .inner,
+.wrapper.style4 .inner {
+  position: relative;
+  z-index: 1;
+}
+
+/* Banner */
+/* line 79, ../../scss/ie9.scss */
+#banner {
+  padding: 14em 0 12em 0 ;
+  height: auto;
+}
+/* line 83, ../../scss/ie9.scss */
+#banner:after {
+  display: none;
+}
+
+/* CTA */
+/* line 92, ../../scss/ie9.scss */
+#cta .inner header {
+  float: left;
+}
+/* line 96, ../../scss/ie9.scss */
+#cta .inner .actions {
+  float: left;
+}
+/* line 100, ../../scss/ie9.scss */
+#cta .inner:after {
+  clear: both;
+  content: '';
+  display: block;
+}
+
+/* Main */
+/* line 111, ../../scss/ie9.scss */
+#main > header {
+  background-image: url("../images/banner.png");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+/* line 118, ../../scss/ie9.scss */
+#main > header:before {
+  background: #000000;
+  content: '';
+  height: 100%;
+  left: 0;
+  opacity: 0.5;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+/* line 129, ../../scss/ie9.scss */
+#main > header > * {
+  position: relative;
+  z-index: 1;
+}
