@@ -1,0 +1,27 @@
+sudo: required
+language: python
+
+cache: pip
+
+python:
+  - "3.6"
+
+services:
+  - docker
+
+install:
+  - docker build -t panoramadv/website .
+  - docker run -dit --name website-ci panoramadv/website
+
+script:
+  - docker exec yafas-server-ci flake8
+
+deploy:
+  skip_cleanup: true
+  provider: script
+  script: ./docker-push.sh
+  on:
+    branch: master
+
+after_script:
+  - docker rm -f website-ci
