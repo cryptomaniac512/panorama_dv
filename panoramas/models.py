@@ -51,7 +51,10 @@ class PanoramaStore(models.Model):
         :rtype: str
 
         """
-        return os.path.join(settings.MEDIA_ROOT, self.store_dir_name, str(self.id))
+        return os.path.join(
+            settings.MEDIA_ROOT,
+            self.store_dir_name, str(self.id),
+        )
 
     def build_store(self):
         """Выполняет сборку хранилища панорамы из переданного архива."""

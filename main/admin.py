@@ -1,11 +1,7 @@
-# coding=utf-8
-
-from __future__ import unicode_literals
-
 from django.contrib import admin
 
-from .forms import ServicesAdminForm, PortfolioAdminForm
-from .models import Features, Feedback, Services, Portfolio
+from .forms import PortfolioAdminForm, ServicesAdminForm
+from .models import Features, Feedback, Portfolio, Services
 
 
 @admin.register(Portfolio)

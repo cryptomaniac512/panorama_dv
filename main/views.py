@@ -1,7 +1,7 @@
 from django.contrib import messages
 from django.core.urlresolvers import reverse
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
-from django.http import HttpResponseRedirect, HttpResponseNotFound
 
 from .forms import FeedbackForm
 from .models import Features, Portfolio, Services
@@ -48,7 +48,7 @@ def get_portfolio_page(request, pk):
 
     """
     portfolio_query = Portfolio.objects.filter(
-        pk=pk, is_published=True
+        pk=pk, is_published=True,
     )
 
     # TODO: Это уебанство, нужно возаращать NotFound

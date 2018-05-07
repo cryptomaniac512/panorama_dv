@@ -1,14 +1,9 @@
-# coding=utf-8
-
-from __future__ import unicode_literals
-
-from froala_editor.widgets import FroalaEditor
-
+from django import forms
 from django.conf import settings
 from django.core.mail import send_mail
-from django import forms
+from froala_editor.widgets import FroalaEditor
 
-from .models import Feedback, Services, Portfolio
+from .models import Feedback, Portfolio, Services
 
 
 class FeedbackForm(forms.ModelForm):
@@ -39,19 +34,19 @@ class FeedbackForm(forms.ModelForm):
         fields = ['name', 'email', 'phone', 'service', 'message']
         widgets = {
             'name': forms.TextInput(attrs={
-                'required': True, 'placeholder': 'Имя:'
+                'required': True, 'placeholder': 'Имя:',
             }),
             'email': forms.EmailInput(attrs={
-                'required': False, 'placeholder': 'Email:'
+                'required': False, 'placeholder': 'Email:',
             }),
             'phone': forms.TextInput(attrs={
-                'required': True, 'placeholder': 'Контактный номер:'
+                'required': True, 'placeholder': 'Контактный номер:',
             }),
             'service': forms.Select(attrs={
                 'required': False,
             }),
             'message': forms.Textarea(attrs={
-                'required': True, 'rows': 6, 'placeholder': 'Сообщение'
+                'required': True, 'rows': 6, 'placeholder': 'Сообщение',
             }),
         }
 
