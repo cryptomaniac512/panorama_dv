@@ -1,24 +1,25 @@
-# coding=utf-8
-
-"""
-Django settings for new_panorama_dv project.
-
-For more information on this file, see
-https://docs.djangoproject.com/en/1.9/topics/settings/
-
-For the full list of settings and their values, see
-https://docs.djangoproject.com/en/1.9/ref/settings/
-"""
-
 import os
-import sys
 
-from django.conf.global_settings import *    # noqa
+import environ
 
+env = environ.Env(DEBUG=(bool, False),)  # set default values and casting
+environ.Env.read_env()                   # reading .env file
+
+DEBUG = env('DEBUG')
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
+SECRET_KEY = env('SECRET_KEY', cast=str)
+
+ALLOWED_HOSTS = [
+    'panorama-dv.ru',
+]
+
+
+DATABASES = {
+    'default': env.db(),
+}
+
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -51,7 +52,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(BASE_DIR, 'templates')
+            os.path.join(BASE_DIR, 'templates'),
         ],
         'OPTIONS': {
             'context_processors': [
@@ -66,39 +67,48 @@ TEMPLATES = [
                 'django.template.loaders.filesystem.Loader',
                 'django.template.loaders.app_directories.Loader',
                 'panoramas.template_loaders.Loader',
-            )
+            ),
         },
     },
 ]
 
 
+def auth_validator(clsname) -> str:
+    return f'django.contrib.auth.password_validation.{clsname}'
+
+
 AUTH_PASSWORD_VALIDATORS = [
-    {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
+    {'NAME': auth_validator('UserAttributeSimilarityValidator')},
+    {'NAME': auth_validator('MinimumLengthValidator')},
+    {'NAME': auth_validator('CommonPasswordValidator')},
+    {'NAME': auth_validator('NumericPasswordValidator')},
 ]
 
 
 LANGUAGE_CODE = 'ru_ru'
-
 TIME_ZONE = 'Asia/Vladivostok'
-
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
 
 
-ROOT_URLCONF = 'urls'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_URL = '/static/'
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' if DEBUG \
+    else 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = env('EMAIL_HOST', cast=str)
+EMAIL_PORT = env('EMAIL_PORT', cast=int)
+EMAIL_USE_TLS = True
+EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD', cast=str)
+EMAIL_HOST_USER = env('EMAIL_HOST_USER', cast=str)
+EMAIL_FROM = env('EMAIL_FROM', cast=str)
+EMAIL_TO = [EMAIL_FROM]
+
+
+ROOT_URLCONF = 'urls'
 WSGI_APPLICATION = 'wsgi.application'
