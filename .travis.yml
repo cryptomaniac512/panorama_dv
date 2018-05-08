@@ -14,7 +14,7 @@ install:
   - docker run -dit --name website-ci panoramadv/website
 
 script:
-  - docker exec yafas-server-ci flake8
+  - docker exec website-ci flake8
 
 deploy:
   skip_cleanup: true
